@@ -8,10 +8,19 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   send-news:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,6 +41,9 @@ jobs:
           EMAIL_RECIPIENT_2: ${{ secrets.EMAIL_RECIPIENT_2 }}
         run: python run_daily.py
 
+      - name: Generate static website
+        run: python generate_static_site.py
+
       - name: Save updated database back to repo
         run: |
           git config user.name "snews-bot"
@@ -39,3 +51,12 @@ jobs:
           git add news.db
           git diff --cached --quiet || git commit -m "chore: update news database"
           git push
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs_build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

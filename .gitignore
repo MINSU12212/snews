@@ -4,3 +4,4 @@ __pycache__/
 venv/
 .venv/
 comment_check*.txt
+docs_build/
