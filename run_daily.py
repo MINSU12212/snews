@@ -3,11 +3,12 @@ from collections import defaultdict
 from flask import render_template
 
 from app import app, CATEGORY_ORDER, CATEGORY_EMOJI
-from database import init_db, save_news_items, get_seen_links
+from database import init_db, save_news_items, get_seen_links, add_seen_links
 from fetch_news import fetch_all_news
 from send_email import send_news_email
+from archive import archive_old_news
 
-SITE_URL = 'http://localhost:5000'  # 배포 후 실제 웹사이트 주소로 교체 예정
+SITE_URL = 'https://minsu12212.github.io/snews/'
 
 
 def run():
@@ -16,6 +17,10 @@ def run():
     print("=" * 50)
     print("음향기기 뉴스 자동 수집 시작")
     print("=" * 50)
+
+    archived = archive_old_news()
+    if archived:
+        print(f"오래된 뉴스 아카이브 완료: {len(archived)}개 날짜")
 
     seen_links = get_seen_links()
     items = fetch_all_news(exclude_links=seen_links)
@@ -27,6 +32,7 @@ def run():
         return
 
     collected_date = save_news_items(items)
+    add_seen_links([item['link'] for item in items])
     print(f"DB 저장 완료: {collected_date}")
 
     grouped = defaultdict(list)

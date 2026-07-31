@@ -1,8 +1,11 @@
+import json
+import os
 import sqlite3
 from datetime import date
 from contextlib import contextmanager
 
 DB_PATH = 'news.db'
+SEEN_LINKS_PATH = 'seen_links.json'
 
 
 @contextmanager
@@ -50,10 +53,20 @@ def save_news_items(items, collected_date=None):
 
 
 def get_seen_links():
-    """지금까지 한 번이라도 수집된 적 있는 모든 링크 (중복 방지용)"""
-    with get_conn() as conn:
-        rows = conn.execute('SELECT DISTINCT link FROM news_items').fetchall()
-    return {row['link'] for row in rows}
+    """지금까지 한 번이라도 보낸 적 있는 모든 링크 (중복 방지용).
+    news_items 테이블과 별개의 파일로 관리해서, 오래된 뉴스를 DB에서
+    지워도(아카이브) 예전에 보낸 뉴스가 "새 소식"으로 재등장하지 않게 한다."""
+    if not os.path.exists(SEEN_LINKS_PATH):
+        return set()
+    with open(SEEN_LINKS_PATH, 'r', encoding='utf-8') as f:
+        return set(json.load(f))
+
+
+def add_seen_links(links):
+    existing = get_seen_links()
+    existing.update(links)
+    with open(SEEN_LINKS_PATH, 'w', encoding='utf-8') as f:
+        json.dump(sorted(existing), f, ensure_ascii=False, indent=2)
 
 
 def get_news_by_date(target_date):
@@ -76,3 +89,17 @@ def get_available_dates():
 def get_latest_date():
     dates = get_available_dates()
     return dates[0] if dates else None
+
+
+def get_dates_older_than(cutoff_date):
+    with get_conn() as conn:
+        rows = conn.execute(
+            'SELECT DISTINCT collected_date FROM news_items WHERE collected_date < ? ORDER BY collected_date',
+            (cutoff_date,)
+        ).fetchall()
+    return [row['collected_date'] for row in rows]
+
+
+def delete_date(target_date):
+    with get_conn() as conn:
+        conn.execute('DELETE FROM news_items WHERE collected_date = ?', (target_date,))

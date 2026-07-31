@@ -18,7 +18,7 @@ AUDIO_TAGS = {
     'cd players', 'stereo amplifiers', 'stereo systems', 'wired headphones',
     'wireless earbuds', 'earbuds', 'soundbars', 'av receivers',
     'surround sound systems', 'turntables', 'music streamers', 'dacs',
-    'cables', 'av accessories', 'av',
+    'cables', 'av accessories', 'av', 'radio',
 }
 
 # 음향기기가 아닌 것으로 명확히 판단되는 태그 (하나라도 있으면 제외)
@@ -26,7 +26,15 @@ NON_AUDIO_TAGS = {
     'televisions', 'projectors', 'smartphones', 'smartphones & tablets',
     'blu-ray players', 'gaming', 'streaming & entertainment',
     'how to watch', 'tv streaming services', 'music streaming',
+    'cameras', 'photography', 'camcorders',
 }
+
+# 태그 정보가 없는 사이트(AudioHead, HiFi Pig 등)에도 공통 적용되는
+# 제목/요약 기반 제외 키워드 (음향기기가 아닌 카메라 등 다른 IT 기기)
+EXCLUDE_KEYWORDS = [
+    'camera', 'dslr', 'mirrorless', 'webcam', 'gopro', 'action cam',
+    'camcorder', 'smartphone', 'tablet pc',
+]
 
 
 def is_audio_related(tags):
@@ -37,6 +45,11 @@ def is_audio_related(tags):
     if terms & NON_AUDIO_TAGS:
         return False
     return bool(terms & AUDIO_TAGS)
+
+
+def contains_excluded_keyword(text):
+    text = text.lower()
+    return any(kw in text for kw in EXCLUDE_KEYWORDS)
 
 CATEGORY_KEYWORDS = {
     '신제품': ['unveil', 'launch', 'release', 'new ', 'announce', 'introduc'],
@@ -126,6 +139,19 @@ def fetch_all_news(per_feed=None, fetch_missing_images=True, translate=True, exc
             if skipped:
                 print(f"  음향기기 외 뉴스 {skipped}건 제외")
             entries = filtered
+
+        # 카테고리 태그가 없는 사이트에도 공통 적용: 카메라 등 음향기기가 아닌 키워드 제외
+        keyword_filtered = []
+        keyword_skipped = 0
+        for entry in entries:
+            text = entry.get('title', '') + ' ' + entry.get('summary', '')
+            if contains_excluded_keyword(text):
+                keyword_skipped += 1
+            else:
+                keyword_filtered.append(entry)
+        if keyword_skipped:
+            print(f"  음향기기 외 키워드(카메라 등) {keyword_skipped}건 제외")
+        entries = keyword_filtered
 
         # 이미 이전에 수집한 적 있는 링크(=예전 소식)는 제외하고 새 소식만 남긴다
         new_entries = [e for e in entries if e.get('link', '') not in exclude_links]
