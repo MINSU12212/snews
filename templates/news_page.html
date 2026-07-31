@@ -22,42 +22,60 @@
             padding: 40px 20px;
             border-radius: 12px;
             color: white;
+            position: relative;
         }
 
         .header h1 { font-size: 32px; margin-bottom: 10px; }
-        .header p { font-size: 14px; opacity: 0.9; }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #667eea;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
+        .date-toggle-wrapper { position: relative; display: inline-block; }
+
+        .date-toggle {
+            background: rgba(255,255,255,0.18);
+            border: none;
+            color: white;
+            font-size: 13px;
+            padding: 7px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
         }
 
-        .calendar-section {
+        .date-toggle:hover { background: rgba(255,255,255,0.3); }
+
+        .calendar-popup {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
             background: white;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 40px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+            padding: 16px;
+            z-index: 100;
+            width: 260px;
+            max-height: 360px;
+            overflow-y: auto;
+            text-align: left;
         }
 
-        .calendar-month { margin-bottom: 24px; }
+        .calendar-popup.open { display: block; }
+
+        .calendar-month { margin-bottom: 16px; }
         .calendar-month:last-child { margin-bottom: 0; }
-        .calendar-month-label { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #333; }
+        .calendar-month-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #333; }
 
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
+            gap: 3px;
         }
 
         .calendar-weekday {
             text-align: center;
-            font-size: 12px;
+            font-size: 10px;
             color: #999;
-            padding: 6px 0;
+            padding: 3px 0;
             font-weight: 600;
         }
 
@@ -66,8 +84,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
-            font-size: 13px;
+            border-radius: 6px;
+            font-size: 11px;
             text-decoration: none;
             color: #ccc;
         }
@@ -195,38 +213,37 @@
     <div class="container">
         <div class="header">
             <h1>🎵 토큰 - 음향기기 뉴스</h1>
-            <p>{% if current_date %}{{ current_date }} 기준 소식{% else %}아직 소식이 없습니다{% endif %}</p>
-        </div>
-
-        {% if back_link %}
-        <a href="{{ back_link }}" class="back-link">← 캘린더로 돌아가기</a>
-        {% endif %}
-
-        {% if calendar_blocks %}
-        <div class="calendar-section">
-            {% for block in calendar_blocks %}
-            <div class="calendar-month">
-                <div class="calendar-month-label">{{ block.label }}</div>
-                <div class="calendar-grid">
-                    {% for wd in block.weekday_labels %}
-                    <div class="calendar-weekday">{{ wd }}</div>
-                    {% endfor %}
-                    {% for week in block.weeks %}
-                        {% for day in week %}
-                            {% if day is none %}
-                            <div class="calendar-day"></div>
-                            {% elif day.has_news %}
-                            <a href="{{ day.date_str }}/" class="calendar-day has-news{% if day.date_str == current_date %} today{% endif %}">{{ day.day }}</a>
-                            {% else %}
-                            <div class="calendar-day">{{ day.day }}</div>
-                            {% endif %}
-                        {% endfor %}
+            <div class="date-toggle-wrapper">
+                <button type="button" id="date-toggle-btn" class="date-toggle">
+                    {% if current_date %}{{ current_date }} 기준 소식{% else %}아직 소식이 없습니다{% endif %} 📅
+                </button>
+                {% if calendar_blocks %}
+                <div id="calendar-popup" class="calendar-popup">
+                    {% for block in calendar_blocks %}
+                    <div class="calendar-month">
+                        <div class="calendar-month-label">{{ block.label }}</div>
+                        <div class="calendar-grid">
+                            {% for wd in block.weekday_labels %}
+                            <div class="calendar-weekday">{{ wd }}</div>
+                            {% endfor %}
+                            {% for week in block.weeks %}
+                                {% for day in week %}
+                                    {% if day is none %}
+                                    <div class="calendar-day"></div>
+                                    {% elif day.has_news %}
+                                    <a href="{{ base_path }}{{ day.date_str }}/" class="calendar-day has-news{% if day.date_str == current_date %} today{% endif %}">{{ day.day }}</a>
+                                    {% else %}
+                                    <div class="calendar-day">{{ day.day }}</div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
                     {% endfor %}
                 </div>
+                {% endif %}
             </div>
-            {% endfor %}
         </div>
-        {% endif %}
 
         {% if not categories %}
         <div class="empty-note">이 날짜에는 새로 수집된 소식이 없습니다.</div>
@@ -262,8 +279,27 @@
         {% endfor %}
 
         <div class="footer-note">
-            <p>💡 매일 아침 8시, 새로 올라온 음향기기 소식만 모아 보여드립니다. 최근 30일 소식을 달력에서 확인할 수 있어요.</p>
+            <p>💡 매일 아침 8시, 새로 올라온 음향기기 소식만 모아 보여드립니다. 날짜를 클릭하면 최근 30일 소식을 달력에서 확인할 수 있어요.</p>
         </div>
     </div>
+
+    <script>
+        (function () {
+            var btn = document.getElementById('date-toggle-btn');
+            var popup = document.getElementById('calendar-popup');
+            if (!btn || !popup) return;
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                popup.classList.toggle('open');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!popup.contains(e.target) && e.target !== btn) {
+                    popup.classList.remove('open');
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

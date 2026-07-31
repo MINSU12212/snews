@@ -44,27 +44,27 @@ def generate():
     app = Flask(__name__)
 
     with app.app_context():
-        # 홈페이지: 최신 날짜 소식 + 캘린더
+        # 홈페이지: 최신 날짜 소식 + 날짜 클릭 시 캘린더 팝업
         latest_items = get_news_by_date(latest) if latest else []
         homepage_html = render_template(
             'news_page.html',
             categories=group_by_category(latest_items),
             current_date=latest,
             calendar_blocks=calendar_blocks,
-            back_link=None,
+            base_path='',
         )
         with open(os.path.join(OUTPUT_DIR, 'index.html'), 'w', encoding='utf-8') as f:
             f.write(homepage_html)
 
-        # 날짜별 서브페이지 (달력에서 클릭해서 들어가는 과거 뉴스)
+        # 날짜별 서브페이지 (여기서도 동일하게 날짜 클릭으로 캘린더 팝업 이용 가능)
         for target_date in available_dates:
             items = get_news_by_date(target_date)
             page_html = render_template(
                 'news_page.html',
                 categories=group_by_category(items),
                 current_date=target_date,
-                calendar_blocks=None,
-                back_link='../',
+                calendar_blocks=calendar_blocks,
+                base_path='../',
             )
             date_dir = os.path.join(OUTPUT_DIR, target_date)
             os.makedirs(date_dir, exist_ok=True)
