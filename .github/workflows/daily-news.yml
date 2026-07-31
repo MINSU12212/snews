@@ -1,0 +1,41 @@
+name: Daily Audio News
+
+on:
+  schedule:
+    # UTC 23:00 = 한국시간(KST) 오전 8:00
+    - cron: '0 23 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  send-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect news and send email
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          EMAIL_RECIPIENT_1: ${{ secrets.EMAIL_RECIPIENT_1 }}
+          EMAIL_RECIPIENT_2: ${{ secrets.EMAIL_RECIPIENT_2 }}
+        run: python run_daily.py
+
+      - name: Save updated database back to repo
+        run: |
+          git config user.name "snews-bot"
+          git config user.email "actions@github.com"
+          git add news.db
+          git diff --cached --quiet || git commit -m "chore: update news database"
+          git push

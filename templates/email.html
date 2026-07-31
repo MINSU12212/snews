@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+</head>
+<body style="margin:0; padding:0; background:#f5f5f5; font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5; padding:20px 0;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff; border-radius:12px; overflow:hidden;">
+
+<tr><td style="background:linear-gradient(135deg,#667eea,#764ba2); background-color:#667eea; padding:32px 20px; text-align:center;">
+<h1 style="margin:0; color:#ffffff; font-size:24px;">🎵 토큰 - 음향기기 뉴스</h1>
+<p style="margin:8px 0 0; color:#ffffff; font-size:13px; opacity:0.9;">{{ current_date }}</p>
+</td></tr>
+
+{% for category, emoji, items in categories %}
+<tr><td style="padding:24px 20px 8px;">
+<h2 style="margin:0 0 12px; font-size:18px; color:#333;">{{ emoji }} {{ category }}</h2>
+</td></tr>
+{% for item in items %}
+<tr><td style="padding:0 20px 16px;">
+<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #eee; border-radius:8px; overflow:hidden;">
+<tr>
+{% if item.image_url %}
+<td width="100" style="vertical-align:top;">
+<a href="{{ item.link }}"><img src="{{ item.image_url }}" width="100" height="100" style="display:block; object-fit:cover;" alt=""></a>
+</td>
+{% endif %}
+<td style="padding:12px; vertical-align:top;">
+<a href="{{ item.link }}" style="color:#333; font-size:14px; font-weight:600; text-decoration:none; line-height:1.4;">{{ item.title }}</a>
+<p style="margin:6px 0; color:#666; font-size:12px; line-height:1.5;">{{ item.summary }}</p>
+<span style="color:#667eea; font-size:11px; font-weight:600;">{{ item.source }}</span>
+</td>
+</tr>
+</table>
+</td></tr>
+{% endfor %}
+{% endfor %}
+
+<tr><td style="padding:16px; text-align:center; background:#fafafa;">
+<span style="color:#999; font-size:12px;">매일 아침 8시, 새로 올라온 음향기기 소식만 모아 보내드립니다</span>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>

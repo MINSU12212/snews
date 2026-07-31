@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+venv/
+.venv/
+comment_check*.txt

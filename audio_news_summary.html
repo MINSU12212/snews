@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음향기기 뉴스 요약 - 2026-07-30</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-header {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .news-thumbnail {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            overflow: hidden;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .news-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .news-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            flex-grow: 0;
+        }
+
+        .news-summary {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 8px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 10px;
+        }
+
+        .news-source {
+            font-size: 11px;
+        }
+
+        .source-site {
+            font-weight: 600;
+            color: #667eea;
+            display: block;
+        }
+
+        .source-date {
+            font-size: 10px;
+            color: #999;
+            display: block;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #666;
+            margin-top: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            font-size: 13px;
+        }
+
+        .footer-note strong {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .category-header {
+                font-size: 20px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 음향기기 뉴스 종합</h1>
+            <p>2026년 7월 30일 | RSS 피드 + 실제 썸네일 이미지</p>
+        </div>
+
+        <!-- 신제품 섹션 -->
+        <div class="category-section">
+            <div class="category-header">🆕 신제품</div>
+            <div class="news-grid">
+                <a href="https://audio-head.com/sonys-latest-iem-focuses-on-noise-isolation/" target="_blank" class="news-card">
+                    <div class="news-thumbnail" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 48px;">🎧</div>
+                    <div class="news-content">
+                        <div class="news-title">Sony's Latest IEM Focuses On Noise Isolation</div>
+                        <div class="news-summary">Sony IER-M500 인이어 모니터 신제품 출시. 노이즈 아이솔레이션에 초점을 맞춘 설계입니다. ($119.99)</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">7월 8일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://audio-head.com/audioquest-unveils-the-dragonfly-copper/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://i0.wp.com/audio-head.com/wp-content/uploads/2026/06/AQC.jpg?resize=800%2C445&ssl=1" alt="AudioQuest Dragonfly Copper"></div>
+                    <div class="news-content">
+                        <div class="news-title">AudioQuest Dragonfly Copper</div>
+                        <div class="news-summary">AudioQuest가 신규 DAC/앰프 동글 Dragonfly Copper를 출시했습니다. 컴팩트한 크기에 고품질 음향 성능을 제공합니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">6월 5일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://audio-head.com/dan-clark-audios-newest-aeon-core/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://i0.wp.com/audio-head.com/wp-content/uploads/2026/06/Core-007-copy.jpg?resize=800%2C445&ssl=1" alt="Dan Clark Audio AEON CORE"></div>
+                    <div class="news-content">
+                        <div class="news-title">Dan Clark Audio's AEON CORE</div>
+                        <div class="news-summary">폐쇄형 평면자석 헤드폰 AEON CORE가 발표되었습니다. 프리미엄 음질과 편안한 착용감이 특징입니다. ($899.99)</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">6월 4일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://audio-head.com/schiit-audio-makes-a-dongle-now-schiit-vestri/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://i0.wp.com/audio-head.com/wp-content/uploads/2026/05/VSCH.jpg?resize=800%2C445&ssl=1" alt="Schiit Vestri"></div>
+                    <div class="news-content">
+                        <div class="news-title">Schiit Vestri</div>
+                        <div class="news-summary">Schiit Audio에서 새로운 동글 제품 Vestri를 소개합니다. 뛰어난 음질의 포터블 DAC 솔루션입니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">5월 19일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.hifipig.com/in-akustik-micro-air-reference-cable-series-expanded/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://www.hifipig.com/wp-content/uploads/2026/07/In-akustik-micro-airehifi-news-july-2026-FEAT-1024x576.jpg" alt="In-Akustik Micro AIR"></div>
+                    <div class="news-content">
+                        <div class="news-title">In-Akustik Micro AIR Reference Cable Series 확대</div>
+                        <div class="news-summary">독일 제조사 In-Akustik이 NF-404 인터커넥트 케이블과 AC-404 전원 케이블을 추가로 출시했습니다. 프리미엄 케이블 라인업 강화입니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">HiFi Pig</span>
+                                <span class="source-date">7월 29일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.hifipig.com/acoustic-signature-thirty-neo-and-merlin-neo-at-hong-kong-high-end-av-show-2026/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://www.hifipig.com/wp-content/uploads/2026/07/acoustic-signature-Thirty-neo-Hongkong-2026-news-FEAT-1024x576.jpg" alt="Acoustic Signature Thirty Neo"></div>
+                    <div class="news-content">
+                        <div class="news-title">Acoustic Signature Thirty Neo & Merlin Neo</div>
+                        <div class="news-summary">독일 턴테이블 제조사 Acoustic Signature의 신제품이 홍콩 AV 쇼에 전시될 예정입니다. 최신 턴테이블 기술의 결정체입니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">HiFi Pig</span>
+                                <span class="source-date">7월 28일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 기술개발 섹션 -->
+        <div class="category-section">
+            <div class="category-header">⚙️ 기술개발</div>
+            <div class="news-grid">
+                <a href="https://www.whathifi.com/hi-fi/audiobros-v2-web-app-adds-conversational-ai-to-make-troubleshooting-and-optimising-your-home-hi-fi-setup-even-easier" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://cdn.mos.cms.futurecdn.net/jfHEcBot3mYojKxi6oPHSc-1280-80.png" alt="AudioBro V2"></div>
+                    <div class="news-content">
+                        <div class="news-title">AudioBro's V2 Web App - AI 기반 트러블슈팅</div>
+                        <div class="news-summary">AudioBro의 V2 웹 애플리케이션에 AI 기반 트러블슈팅 기능이 추가되었습니다. 자연스러운 대화로 홈 하이파이 시스템 최적화가 가능합니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">What Hi-Fi?</span>
+                                <span class="source-date">7월 30일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://audio-head.com/what-is-realism-in-hifi-bill-low/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://i0.wp.com/audio-head.com/wp-content/uploads/2026/05/Realsss.jpg?resize=800%2C445&ssl=1" alt="Realism in HiFi"></div>
+                    <div class="news-content">
+                        <div class="news-title">What is "Realism" in HiFi?</div>
+                        <div class="news-summary">하이파이에서 리얼리즘의 의미를 철학적으로 탐구합니다. 음향기술과 음악감상의 본질에 대한 깊이 있는 논의입니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">5월 18일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 행사/이벤트 섹션 -->
+        <div class="category-section">
+            <div class="category-header">🎪 행사/이벤트</div>
+            <div class="news-grid">
+                <a href="https://audio-head.com/high-end-vienna-2026-hifi-highlights-and-best-of-show/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://i0.wp.com/audio-head.com/wp-content/uploads/2026/06/ml1-copy.jpg?resize=800%2C445&ssl=1" alt="HIGH END Vienna 2026"></div>
+                    <div class="news-content">
+                        <div class="news-title">HIGH END Vienna 2026</div>
+                        <div class="news-summary">뮌헨에서 빈으로 이전된 HIGH END 2026 전시회의 하이라이트와 베스트 오브 쇼 선정을 소개합니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">6월 15일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.hifipig.com/constellation-statement-with-wilson-audio-autobiography-at-hong-kong-high-end-av-show-2026/" target="_blank" class="news-card">
+                    <div class="news-thumbnail" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 48px;">🏛️</div>
+                    <div class="news-content">
+                        <div class="news-title">Constellation & Wilson Audio at Hong Kong Show</div>
+                        <div class="news-summary">Constellation Statement 시스템이 홍콩 고급 AV 쇼에서 시연됩니다. Wilson Audio Autobiography와의 매칭으로 최고의 음향 경험을 제공합니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">HiFi Pig</span>
+                                <span class="source-date">7월 29일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.hifipig.com/audio-group-denmark-borresen-m8-and-aavik-m880-at-hong-kong-high-end-av-show-2026/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://www.hifipig.com/wp-content/uploads/2026/07/audio-group-denmark-borresen-aavik-hifi-news-hong-kong-2026-FEAT-1024x576.jpg" alt="Audio Group Denmark"></div>
+                    <div class="news-content">
+                        <div class="news-title">Audio Group Denmark at Hong Kong Show</div>
+                        <div class="news-summary">Audio Group Denmark의 flagship Borresen M8과 Aavik M880 시스템이 홍콩 쇼에서 공개됩니다. 북유럽 고급 음향 기술의 정수입니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">HiFi Pig</span>
+                                <span class="source-date">7월 28일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 비교/리뷰 섹션 -->
+        <div class="category-section">
+            <div class="category-header">🔍 비교/리뷰</div>
+            <div class="news-grid">
+                <a href="https://audio-head.com/top-10-best-party-speakers/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://i0.wp.com/audio-head.com/wp-content/uploads/2026/07/top-10-best-partssssy-speakers-walnut-1600x890-srgb-icc-copy.jpg?resize=800%2C445&ssl=1" alt="Top 10 Best Party Speakers"></div>
+                    <div class="news-content">
+                        <div class="news-title">Top 10 Best Party Speakers</div>
+                        <div class="news-summary">최고의 파티 스피커 10선을 선정했습니다. Wharfedale Denton 1S 인상기와 함께 다양한 파티 스피커를 비교합니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">7월 29일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://audio-head.com/top-10-best-speakers-2026/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://i0.wp.com/audio-head.com/wp-content/uploads/2026/06/TOPdddd.jpg?resize=800%2C445&ssl=1" alt="Top 10 Best Speakers"></div>
+                    <div class="news-content">
+                        <div class="news-title">Top 10 Best Speakers For 2026</div>
+                        <div class="news-summary">2026년 최고의 오디오필 스피커 순위를 선정했습니다. 입문용부터 고급형까지 다양한 스피커들을 순위별로 소개합니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">6월 29일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 업계소식/인터뷰 섹션 -->
+        <div class="category-section">
+            <div class="category-header">🎤 업계소식/인터뷰</div>
+            <div class="news-grid">
+                <a href="https://audio-head.com/an-interview-with-benchmark-media-systems/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://i0.wp.com/audio-head.com/wp-content/uploads/2026/07/TOPAHS14E10.jpg?resize=800%2C450&ssl=1" alt="Benchmark Interview"></div>
+                    <div class="news-content">
+                        <div class="news-title">Interview: Benchmark Media Systems</div>
+                        <div class="news-summary">Benchmark Media Systems의 John Siau와의 특별 인터뷰 에피소드입니다. 업계 선도 기업의 철학과 전망을 들어봅니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">7월 13일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://audio-head.com/an-interview-with-julie-mullins/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://i0.wp.com/audio-head.com/wp-content/uploads/2026/06/JMTOP.jpg?resize=800%2C445&ssl=1" alt="Julie Mullins Interview"></div>
+                    <div class="news-content">
+                        <div class="news-title">Interview: Julie Mullins</div>
+                        <div class="news-summary">오디오 업계 저명 인사 Julie Mullins와의 특별 인터뷰입니다. 하이파이 산업의 현재와 미래에 대한 통찰력 있는 대화입니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">AudioHead</span>
+                                <span class="source-date">6월 2일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 기타 섹션 -->
+        <div class="category-section">
+            <div class="category-header">📰 기타</div>
+            <div class="news-grid">
+                <a href="https://www.whathifi.com/smartphones-tablets/smartphones/samsung-claims-that-its-new-foldable-phone-is-made-for-video-so-i-put-that-to-the-test" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://cdn.mos.cms.futurecdn.net/4vSKJ82sTmhGXiNiLJmsyg-1280-80.jpg" alt="Samsung Galaxy Z Fold"></div>
+                    <div class="news-content">
+                        <div class="news-title">Samsung Galaxy Z Fold - 비디오 테스트</div>
+                        <div class="news-summary">Samsung Galaxy Z Fold의 비디오 시청 경험을 테스트했습니다. 작은 휴대폰, 큰 OLED 화면의 조합을 평가합니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">What Hi-Fi?</span>
+                                <span class="source-date">7월 29일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.whathifi.com/tv-home-cinema/televisions/i-have-been-tracking-the-price-of-lgs-brilliant-2026-mid-range-oled-and-it-has-just-hit-a-new-low" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://cdn.mos.cms.futurecdn.net/gvYpEs85SHgca3s7UNdq5W-1280-80.jpg" alt="LG C6 OLED TV"></div>
+                    <div class="news-content">
+                        <div class="news-title">LG C6 OLED TV 가격 인하</div>
+                        <div class="news-summary">LG의 2026년 중급형 OLED TV가 새로운 최저가를 기록했습니다. 프라임 데이보다 저렴해진 가격으로 최고의 성능을 제공합니다.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">What Hi-Fi?</span>
+                                <span class="source-date">7월 29일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.hifipig.com/the-hifi-pig-selection-box-july-2026/" target="_blank" class="news-card">
+                    <div class="news-thumbnail"><img src="https://www.hifipig.com/wp-content/uploads/2026/07/selection-box-julye2026-FEATHPSBJUL2026-1024x576.jpg" alt="Selection Box"></div>
+                    <div class="news-content">
+                        <div class="news-title">The HiFi PiG Selection Box July 2026</div>
+                        <div class="news-summary">음악, 문학, 영화 등 다양한 콘텐츠를 소개하는 HiFi Pig의 월간 큐레이션입니다. 이달의 추천 콘텐츠를 확인하세요.</div>
+                        <div class="news-footer">
+                            <div class="news-source">
+                                <span class="source-site">HiFi Pig</span>
+                                <span class="source-date">7월 28일</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>💡 <strong>실제 썸네일 이미지 적용됨</strong> | 각 뉴스 페이지에서 추출한 원본 이미지를 표시합니다.<br>카테고리별로 분류된 뉴스를 클릭하면 원문으로 이동합니다.</p>
+        </div>
+    </div>
+</body>
+</html>
