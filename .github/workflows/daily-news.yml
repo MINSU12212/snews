@@ -50,6 +50,7 @@ jobs:
           git config user.email "actions@github.com"
           git add news.db seen_links.json archive/
           git diff --cached --quiet || git commit -m "chore: update news database"
+          git pull --rebase origin main
           git push
 
       - name: Upload Pages artifact
