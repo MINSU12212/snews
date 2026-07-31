@@ -48,7 +48,8 @@ jobs:
         run: |
           git config user.name "snews-bot"
           git config user.email "actions@github.com"
-          git add news.db seen_links.json archive/
+          git add news.db seen_links.json
+          git add archive/ 2>/dev/null || true
           git diff --cached --quiet || git commit -m "chore: update news database"
           git pull --rebase origin main
           git push
