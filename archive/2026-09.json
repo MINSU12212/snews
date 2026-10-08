@@ -460,5 +460,16 @@
     "source": "What Hi-Fi?",
     "category": "신제품",
     "published": "Sat, 05 Sep 2026 07:00:00 +0000"
+  },
+  {
+    "id": 321,
+    "collected_date": "2026-09-07",
+    "title": "The Fortress Of Solitude",
+    "link": "https://www.hifipig.com/sunday-thoughts-the-fortress-of-solitude/",
+    "summary": "So, it’s that time of year when the kids go back to school. Over the last few weeks, we’ve been observing the growing sense of relief on parents’ face...",
+    "image_url": "https://www.hifipig.com/wp-content/uploads/2026/09/Sunday-thoughts-solitude.jpg",
+    "source": "HiFi Pig",
+    "category": "기타",
+    "published": "Sun, 06 Sep 2026 08:38:05 +0000"
   }
 ]
