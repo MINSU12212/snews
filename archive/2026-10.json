@@ -1681,5 +1681,38 @@
     "source": "What Hi-Fi?",
     "category": "행사/이벤트",
     "published": "Sat, 17 Oct 2026 08:30:00 +0000"
+  },
+  {
+    "id": 647,
+    "collected_date": "2026-10-19",
+    "title": "Do You Actually Want My Money?",
+    "link": "https://www.hifipig.com/do-you-actually-want-my-money/",
+    "summary": "Following my recent Sunday Thoughts pieces about the way music brings people together and the joys of listening to other people bellowing into their p...",
+    "image_url": "https://www.hifipig.com/wp-content/uploads/2026/10/spend-permission-required.jpg",
+    "source": "HiFi Pig",
+    "category": "기타",
+    "published": "Sun, 18 Oct 2026 05:00:00 +0000"
+  },
+  {
+    "id": 645,
+    "collected_date": "2026-10-19",
+    "title": "Auden X Moorgate Sheffield Audio Show",
+    "link": "https://www.hifipig.com/auden-x-moorgate-sheffield-audio-show/",
+    "summary": "JOIN OSCAR AND KELLY AS THEY EXPLORE THE AUDEN X MOORGATE SHEFFIELD AUDIO SHOW UK distributor Auden Distribution and Sheffield HiFi shop Moorgate Acou...",
+    "image_url": "https://www.hifipig.com/wp-content/uploads/2026/10/Auden-Sheffield-audio-show-2026-report-FEAT.jpg",
+    "source": "HiFi Pig",
+    "category": "행사/이벤트",
+    "published": "Sun, 18 Oct 2026 15:14:47 +0000"
+  },
+  {
+    "id": 646,
+    "collected_date": "2026-10-19",
+    "title": "The Happening Show Report",
+    "link": "https://www.hifipig.com/the-happening-show-report/",
+    "summary": "JOIN OSCAR AND KELLY AS THEY VISIT THE HAPPENING, A HIGH END AUDIO EVENT BY DISTRIBUTOR ABSOLUTE SOUNDS On the 17th and 18th October, Absolute Sounds ...",
+    "image_url": "https://www.hifipig.com/wp-content/uploads/2026/10/The-Happening-absolute-sounds-2026-report-FEAT-V2.jpg",
+    "source": "HiFi Pig",
+    "category": "행사/이벤트",
+    "published": "Sun, 18 Oct 2026 14:31:15 +0000"
   }
 ]
